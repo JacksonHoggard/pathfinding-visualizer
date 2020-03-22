@@ -9,6 +9,13 @@ var movingStart = false;
 var movingEnd = false;
 
 var astarfinder = new AstarFinder();
+var dijkstra = new Dijkstra();
+
+function removeFromArray(arr, elt) {
+	for(var i = arr.length - 1; i >= 0; i--) {
+		if(arr[i] == elt) arr.splice(i, 1);
+	}
+}
 
 function clearBoard(newType) {
 	type = newType;
@@ -16,6 +23,9 @@ function clearBoard(newType) {
 	if(type == 'A*') {
 		astarfinder.setup();
 		astarfinder.path = [];
+	}
+	if(type == 'Dijkstra') {
+		dijkstra.setup();
 	}
 }
 
@@ -33,14 +43,17 @@ function setup() {
 	h = height / rows;
 
 	type = 'A*';
-	if(type = 'A*') {
+	if(type == 'A*') {
 		astarfinder.setup();
+	}
+	if(type == 'Dijkstra') {
+		dijkstra.setup();
 	}
 }
 
 function draw() {
 
-	background(0);
+	background(255);
 
 	for(var i = 0; i < cols; i++) {
 		for(var j = 0; j < rows; j++) {
@@ -50,6 +63,9 @@ function draw() {
 	if(type == 'A*') {
 		if(begin) astarfinder.pathFind();
 		astarfinder.draw();
+	}
+	if(type == 'Dijkstra') {
+		dijkstra.draw();
 	}
 }
 
@@ -72,6 +88,9 @@ function mouseDragged() {
 			for(var j = 0; j < rows; j++) {
 				if(grid[i][j].isInBounds(mouseX, mouseY)) {
 					grid[i][j].selected = true;
+					if(!movingStart && !movingEnd && !grid[i][j].start && !grid[i][j].end) {
+						grid[i][j].wall = true;
+					}
 				} else {
 					grid[i][j].selected = false;
 				}

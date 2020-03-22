@@ -4,16 +4,13 @@ function Spot(i,j) {
 	this.f = 0;
 	this.g = 0;
 	this.h = 0;
+	this.d = 0;
 	this.neighbors = [];
 	this.previous = undefined;
 	this.wall = false;
 	this.start = false;
 	this.end = false;
 	this.selected = false;
-
-	if(random(1) < 0.3) {
-		this.wall = true;
-	}
 
 	this.show = function(col) {
 		fill(col);
@@ -30,7 +27,11 @@ function Spot(i,j) {
 			fill(0, 255, 0);
 		}
 		noStroke();
-		rect(this.i * w, this.j * h, w - 1, h - 1);
+		if(!this.wall && !this.start && !this.end && !this.selected) {
+			rect(this.i * w, this.j * h, w, h);
+		} else {
+			circle(this.i * w + (w/2), this.j * h + (h/2), w);
+		}
 	}
 
 	this.addNeighbors = function(grid) {
@@ -63,7 +64,7 @@ function Spot(i,j) {
 	}
 
 	this.isInBounds = function(x, y) {
-		if(this.i * w < x && this.j * h < y && x < (this.i * w) + (w - 1) && y < (this.j * h) + (h - 1)) return true;
+		if(this.i * w < x && this.j * h < y && x < (this.i * w) + w && y < (this.j * h) + h) return true;
 		return false;
 	}
 }

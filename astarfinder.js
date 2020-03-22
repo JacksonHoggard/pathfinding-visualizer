@@ -7,12 +7,6 @@ function AstarFinder() {
 		var d = dist(a.i, a.j, b.i, b.j);
 		return d;
 	}
-
-	this.removeFromArray = function(arr, elt) {
-		for(var i = arr.length - 1; i >= 0; i--) {
-			if(arr[i] == elt) arr.splice(i, 1);
-		}
-	}
 	
 	this.setup = function() {
 		console.log('A*');
@@ -65,7 +59,7 @@ function AstarFinder() {
 					return;
 				}
 
-				this.removeFromArray(this.openSet, current)
+				removeFromArray(this.openSet, current)
 				this.closedSet.push(current);
 
 				var neighbors = current.neighbors;
@@ -114,15 +108,19 @@ function AstarFinder() {
 
 	this.draw = function() {
 		for(var i = 0; i < this.closedSet.length; i++) {
-			this.closedSet[i].show(color(255, 0, 0));
+			this.closedSet[i].show(color(255, 105, 97));
 		}
 
 		for(var i = 0; i < this.openSet.length; i++) {
-			this.openSet[i].show(color(0, 255, 0));
+			this.openSet[i].show(color(139, 227, 208));
 		}
 
-		for(var i = 0; i < this.path.length; i++) {
-			this.path[i].show(color(0, 0, 255));
+		var temp = this.path[0];
+		for(var i = 1; i < this.path.length; i++) {
+			stroke(0, 0, 255);
+			strokeWeight(10);
+			line(temp.i * w + (w/2), temp.j * h + (h/2), this.path[i].i * w + (w/2), this.path[i].j * h + (h/2));
+			temp = this.path[i];
 		}
 	}
 }
