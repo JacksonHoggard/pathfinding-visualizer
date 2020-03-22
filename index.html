@@ -1,0 +1,53 @@
+<html>
+	
+	<head>
+		<title>Pathfinding Visualizer</title>
+		<meta charset="UTF-8">
+		<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+		<script src="astarfinder.js"></script>
+		<script src="spot.js"></script>
+		<script language="javascript" type="text/javascript" src="sketch.js"></script>
+		<style>
+			body {
+				margin: 100px 540px;
+			}
+			.dropdown {
+  				position: relative;
+  				display: inline-block;
+			}
+
+			.dropdown-content {
+  				display: none;
+  				position: absolute;
+  				background-color: #f9f9f9;
+  				min-width: 160px;
+  				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  				padding: 12px 16px;
+  				z-index: 1;
+			}
+
+			.dropdown:hover .dropdown-content {
+  				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dropdown">
+  			<span>Operations</span>
+  			<div class="dropdown-content">
+    			<button onclick="begin = true;
+    							 if(!(astarfinder.openSet.length > 1))
+    							 	astarfinder.closedSet = [];">Start</p>
+    			<button onclick="begin = false;">Stop</p>
+    			<button onclick="clearBoard('A*')">Reset</p>
+  			</div>
+		</div>
+		<div class="dropdown">
+  			<span>Algorithms</span>
+  			<div class="dropdown-content">
+    			<button onclick="clearBoard('A*')">A*</p>
+  			</div>
+		</div>
+	</body>
+
+</html>
