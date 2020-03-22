@@ -11,6 +11,23 @@ var movingEnd = false;
 var astarfinder = new AstarFinder();
 var dijkstra = new Dijkstra();
 
+function randomizeBoard(percent) {
+	for(var i = 0; i < cols; i++) {
+		for(var j = 0; j < rows; j++) {
+			if(!grid[i][j].start && !grid[i][j].end) {
+				grid[i][j].wall = false;
+			}
+		}
+	}
+	for(var i = 0; i < cols; i++) {
+		for(var j = 0; j < rows; j++) {
+			if(!grid[i][j].start && !grid[i][j].end) {
+				if(random(1) < percent) grid[i][j].wall = true;
+			}
+		}
+	}
+}
+
 function removeFromArray(arr, elt) {
 	for(var i = arr.length - 1; i >= 0; i--) {
 		if(arr[i] == elt) arr.splice(i, 1);
