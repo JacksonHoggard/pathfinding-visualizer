@@ -1,5 +1,5 @@
-var cols = 50;
-var rows = 50;
+var cols;
+var rows;
 var w, h;
 var type;
 var grid = new Array(cols);
@@ -9,7 +9,6 @@ var movingStart = false;
 var movingEnd = false;
 
 var astarfinder = new AstarFinder();
-var dijkstra = new Dijkstra();
 
 function randomizeBoard(percent) {
 	for(var i = 0; i < cols; i++) {
@@ -41,9 +40,6 @@ function clearBoard(newType) {
 		astarfinder.setup();
 		astarfinder.path = [];
 	}
-	if(type == 'Dijkstra') {
-		dijkstra.setup();
-	}
 }
 
 function resetAlgorithm() {
@@ -54,7 +50,12 @@ function resetAlgorithm() {
 }
 
 function setup() {
-	createCanvas(800, 800);
+	var cWidth = windowWidth;
+	var cHeight = windowHeight - document.getElementById('operations').clientHeight;
+	createCanvas(cWidth, cHeight);
+
+	cols = Math.ceil((cWidth / 10) / 2);
+	rows = Math.ceil((cHeight / 10) / 2);
 
 	w = width / cols;
 	h = height / rows;
@@ -62,9 +63,6 @@ function setup() {
 	type = 'A*';
 	if(type == 'A*') {
 		astarfinder.setup();
-	}
-	if(type == 'Dijkstra') {
-		dijkstra.setup();
 	}
 }
 
@@ -80,9 +78,6 @@ function draw() {
 	if(type == 'A*') {
 		if(begin) astarfinder.pathFind();
 		astarfinder.draw();
-	}
-	if(type == 'Dijkstra') {
-		dijkstra.draw();
 	}
 }
 

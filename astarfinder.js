@@ -9,8 +9,6 @@ function AstarFinder() {
 	}
 	
 	this.setup = function() {
-		console.log('A*');
-
 		this.openSet = [];
 		this.closedSet = [];
 
@@ -39,8 +37,6 @@ function AstarFinder() {
 		end.wall = false;
 
 		this.openSet.push(start);
-
-		console.log(grid);
 	}
 
 	this.pathFind = function() {

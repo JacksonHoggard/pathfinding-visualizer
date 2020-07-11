@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html>
-	
 	<head>
 		<title>Pathfinding Visualizer</title>
 		<meta charset="UTF-8">
@@ -7,53 +7,26 @@
 			body {
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
 				min-height: 95vh;
-			}
-			.dropdown {
-  				position: relative;
-  				display: inline-block;
-			}
-
-			.dropdown-content {
-  				display: none;
-  				position: absolute;
-  				background-color: #f9f9f9;
-  				min-width: 160px;
-  				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  				padding: 12px 16px;
-  				z-index: 1;
-			}
-
-			.dropdown:hover .dropdown-content {
-  				display: block;
+				overflow: hidden;
+				margin: 0;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="dropdown">
-  			<span>Operations</span>
-  			<div class="dropdown-content">
+		<div id="operations">
+  			<div>
     			<button onclick="begin = true;
     							 if(!(astarfinder.openSet.length > 1))
     							 	astarfinder.closedSet = [];">Start</p>
     			<button onclick="begin = false;">Stop</p>
     			<button onclick="clearBoard('A*')">Reset</p>
-    			<button onclick="randomizeBoard(0.4)">Randomize</p>
-  			</div>
-		</div>
-		<div class="dropdown">
-  			<span>Algorithms</span>
-  			<div class="dropdown-content">
-    			<button onclick="clearBoard('A*')">A*</p>
-    			<button onclick="clearBoard('Dijkstra')">Dijkstra</p>
+    			<button onclick="randomizeBoard(0.4)">Randomize</p></button>
+    			<p> Visit the project page on <a href="https://github.com/CremBluRay/pathfinding-visualizer">GitHub!</a></p>
   			</div>
 		</div>
 		<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
 		<script src="astarfinder.js"></script>
-		<script src="dijkstra.js"></script>
 		<script src="spot.js"></script>
 		<script language="javascript" type="text/javascript" src="sketch.js"></script>
 	</body>
