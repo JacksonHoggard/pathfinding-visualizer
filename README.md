@@ -2,7 +2,7 @@
 🌐 A website that visualizes pathfinding algorithms
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/CremBluRay/CremBluRay.github.io/master/assets/images/demo/pathfinding-visualizer/Capture.PNG">
+    <img src="https://raw.githubusercontent.com/JacksonHoggard/JacksonHoggard.github.io/main/images/path.gif">
 </p>
 
 ### Current Algorithms:
