@@ -14,4 +14,4 @@
  - Breath-First
  - Depth-First
 
-Link to website: [https://crembluray.github.io/pathfinding-visualizer/](https://crembluray.github.io/pathfinding-visualizer/)
+Link to website: [https://jacksonhoggard.github.io/pathfinding-visualizer/](https://jacksonhoggard.github.io/pathfinding-visualizer/)
